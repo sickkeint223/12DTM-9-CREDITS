@@ -5,6 +5,7 @@ using UnityEngine;
 public class PlayerControllerX : MonoBehaviour
 {
     public float speed;
+    private float speedThreshold = 1;
     public float rotationSpeed;
     public float verticalInput;
 
@@ -26,6 +27,16 @@ public class PlayerControllerX : MonoBehaviour
         // tilt the plane up/down based on up/down arrow keys
         transform.Rotate(Vector3.right * rotationSpeed * verticalInput);
 
-        transform.Rotate(Vector3.right * rotationSpeed * verticalInput);
+        //make player increase/decrease speed when rotating up or down, like real wingsuit
+        if (speed * transform.localEulerAngles.x > speedThreshold)
+        {
+            speed = speed * transform.localEulerAngles.x;
+        } else if(speed * transform.localEulerAngles.x < speedThreshold)
+        {
+            speed = speed
+        }
+        
+        
+
     }
 }
