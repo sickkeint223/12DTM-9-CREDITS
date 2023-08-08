@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerControllerX : MonoBehaviour
 {
     private float speed;
-    private float speedBase = 100;
     private float speedMax = 0.5f;
     private float speedMin = 0.01f;
     private float rotationSpeed; 
@@ -14,7 +13,10 @@ public class PlayerControllerX : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rotationSpeed = 0.5f;
+        rotationSpeed = 1.0f;
+
+        InvokeRepeating("UpdateSpeed", 0.2f, 3.0f);
+
     }
 
     // Update is called once per frame
@@ -23,17 +25,16 @@ public class PlayerControllerX : MonoBehaviour
         // get the user's vertical input
         verticalInput = Input.GetAxis("Vertical");
 
-        // move the plane forward at a constant rate
+        // move the player forward at a constant rate
         transform.Translate(Vector3.forward * speed);
 
-        // tilt the plane up/down based on up/down arrow keys
+        // tilt the player up/down based on up/down arrow keys
         transform.Rotate(Vector3.right * rotationSpeed * verticalInput);
 
         // positive angle should increase the speed up to a threshold (max)
         // negative angle should descrease the speed to a min. 
         // maximum angle of 50 degrees (x)
 
-        speed = transform.localEulerAngles.x / 10000 + speed;
 
         if (speed >= speedMax)
         {
@@ -44,6 +45,13 @@ public class PlayerControllerX : MonoBehaviour
         {
             speed = speedMin;
         }
+
+    }
+
+    void UpdateSpeed()
+    { 
+
+        speed = transform.localEulerAngles.x / 2 / 10000 + speed;
 
     }
 }
