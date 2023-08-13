@@ -13,7 +13,7 @@ public class PlayerControllerX : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        rotationSpeed = 1.0f;
+        rotationSpeed = 3.0f;
 
         InvokeRepeating("UpdateSpeed", 0.2f, 3.0f);
 
@@ -51,7 +51,7 @@ public class PlayerControllerX : MonoBehaviour
     void UpdateSpeed()
     { 
 
-        speed = transform.localEulerAngles.x / 2 / 10000 + speed;
+        speed = transform.localEulerAngles.x / 2 / 20000 + speed;
 
     }
 }
