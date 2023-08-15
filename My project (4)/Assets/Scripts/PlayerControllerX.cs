@@ -1,6 +1,6 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerControllerX : MonoBehaviour
 {
@@ -17,6 +17,7 @@ public class PlayerControllerX : MonoBehaviour
 
         InvokeRepeating("UpdateSpeed", 0.2f, 3.0f);
 
+        Invoke("OnTriggerEnter", 5.0f);
     }
 
     // Update is called once per frame
@@ -54,4 +55,17 @@ public class PlayerControllerX : MonoBehaviour
         speed = transform.localEulerAngles.x / 2 / 20000 + speed;
 
     }
+
+    void OnTriggerEnter(Collider Collider)
+    {
+        if (Collider.gameObject.CompareTag("ground"))
+        {
+            
+            SceneManager.LoadScene(1);
+        }
+
+    }
+
+    
+
 }
