@@ -17,7 +17,7 @@ public class PlayerControllerX : MonoBehaviour
 
         InvokeRepeating("UpdateSpeed", 0.2f, 3.0f);
 
-        Invoke("OnTriggerEnter", 5.0f);
+        Invoke("OnTriggerEnter(Collider Collider)", 200.0f);
     }
 
     // Update is called once per frame
