@@ -52,6 +52,6 @@ public class ObstacleMovement : MonoBehaviour
         float distanceToWaypoint = Vector3.Distance(_previousWaypoint.position, _targetWaypoint.position);
         _timeToWaypoint = distanceToWaypoint / _speed;
 
-        // Note: This method changes the target to the next waypoint.
+        // This method changes the target to the next waypoint.
     }
 }
